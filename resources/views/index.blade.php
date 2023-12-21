@@ -529,9 +529,9 @@
                 <h4>Ricky Primayuda Putra</h4>
                 <span>Frontend Developer</span>
                 <div class="social">
-                  <a href=""><i class="bi bi-github"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href="https://github.com/rickyprimay/"><i class="bi bi-github"></i></a>
+                  <a href="https://instagram.com/rickyprimay"><i class="bi bi-instagram"></i></a>
+                  <a href="https://linkedin.com/in/rickyprimay"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
             </div>
@@ -544,9 +544,9 @@
                 <h4>Fakhri Rasyid Saputro</h4>
                 <span>Mobile Developer</span>
                 <div class="social">
-                  <a href=""><i class="bi bi-github"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href="https://github.com/fakhrirasyids/"><i class="bi bi-github"></i></a>
+                  <a href="https://instagram.com/fakhrirasyids/"><i class="bi bi-instagram"></i></a>
+                  <a href="https://linkedin.com/in/fakhrirasyids/"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
             </div>
@@ -559,9 +559,9 @@
                 <h4>Hafiz Aminsalim</h4>
                 <span>Backend Developer</span>
                 <div class="social">
-                  <a href=""><i class="bi bi-github"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href="https://github.com/hafizxd/"><i class="bi bi-github"></i></a>
+                  <a href="https://instagram.com/hafizhzma_/"><i class="bi bi-instagram"></i></a>
+                  <a href="https://linkedin.com/in/hafiz-aminsalim/"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
             </div>
@@ -574,9 +574,9 @@
                 <h4>Hendra Sutrisno</h4>
                 <span>IoT Developer</span>
                 <div class="social">
-                  <a href=""><i class="bi bi-github"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href="https://github.com/hendsuuu/"><i class="bi bi-github"></i></a>
+                  <a href="https://instagram.com/hendsuuuu/"><i class="bi bi-instagram"></i></a>
+                  <a href="https://linkedin.com/in/hendrasutrisno/"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
             </div>
