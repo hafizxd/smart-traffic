@@ -20,7 +20,7 @@ Route::get('/login', function (){
     return view('login');
 });
 
-Route::get('/admin/dashboard', function (){
+Route::get('/admin', function (){
     return view('admin/index');
 });
 Route::get('/admin/user', function (){
