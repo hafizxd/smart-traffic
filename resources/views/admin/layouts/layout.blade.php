@@ -25,9 +25,9 @@
 
 <body id="page-top">
 <div id="wrapper">
-    @include('admin/components/header')
+    @include('admin/layouts/header')
     @yield('content')
-    @include('admin/components/footer')
+    @include('admin/layouts/footer')
 </div>
 <!-- End of Page Wrapper -->
 
@@ -75,6 +75,9 @@
 <script src="{{asset('assets/js/demo/chart-area-demo.js')}}"></script>
 <script src="{{asset('assets/js/demo/chart-pie-demo.js')}}"></script>
 <script src="{{asset('assets/js/demo/datatables-demo.js')}}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 

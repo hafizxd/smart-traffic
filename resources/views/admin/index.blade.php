@@ -1,4 +1,4 @@
-@extends('admin/components/layout')
+@extends('admin/layouts/layout')
 
 @section('content')
 <!-- Begin Page Content -->
