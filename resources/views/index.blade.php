@@ -64,7 +64,7 @@
                         <h1>Mari ikut menjaga polusi udara dengan aplikasi <span>Traffic Sense</span></h1>
                         <h2>Navigasi Cerdas dan Udara Sehat Bersama Traffic Sense</h2>
                         <div class="text-center text-lg-start">
-                            <a href="#about" class=""><img class="w-25"
+                            <a href="https://play.google.com/store/games" class=""><img class="w-25"
                                     src="{{ asset('assets/img/Play Store.svg') }}"></a>
                         </div>
                     </div>
