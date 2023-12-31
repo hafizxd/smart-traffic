@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="{{ asset('assets/img/logots.png') }}" rel="icon">   
+    <link href="{{ asset('assets/img/logots.png') }}" rel="icon">
     <title>Login</title>
 
     <!-- Custom fonts for this template-->
@@ -41,7 +41,13 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Login Dashboard!</h1>
                                     </div>
-                                    <form method="POST" action="" class="user">
+                                    @if (session('error'))
+                                        <div class="alert alert-danger">
+                                            <b>Opps!</b> {{ session('error') }}
+                                        </div>
+                                    @endif
+                                    <form method="POST" action="{{ route('login-process') }}" class="user">
+                                        @csrf
                                         <div class="form-group">
                                             <input type="email" name="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"

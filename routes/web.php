@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
@@ -18,27 +18,22 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-
-Route::get('/login', function (){
-    return view('login');
-});
-
-
-Route::middleware(['auth', 'role'])->group(function () {
-    
-});
-
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
-Route::get('/admin/user', function (){
-    return view('admin/pages/user');
-});
-Route::get('/admin/iot', function (){
-    return view('admin/pages/iot');
-});
-Route::get('/admin/carpool', function (){
-    return view('admin/pages/carpool');
-});
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login-process', [LoginController::class, 'loginAction'])->name('login-process');
+Route::get('/logout-process', [LoginController::class, 'logoutAction'])->name('logout-process');
 
-Route::get('/admin/comment', [AdminController::class, 'comments'])->name('comment');
+Route::middleware(['auth:web'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/user', function () {
+        return view('admin/pages/user');
+    });
+    Route::get('/admin/iot', function () {
+        return view('admin/pages/iot');
+    });
+    Route::get('/admin/carpool', function () {
+        return view('admin/pages/carpool');
+    });
+    Route::get('/admin/comment', [AdminController::class, 'comments'])->name('comment');
+});
