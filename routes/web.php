@@ -41,4 +41,4 @@ Route::get('/admin/carpool', function (){
     return view('admin/pages/carpool');
 });
 
-Route::get('/admin/comment', [AdminController::class, 'showComments'])->name('comment');
+Route::get('/admin/comment', [AdminController::class, 'comments'])->name('comment');
