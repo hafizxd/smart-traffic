@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link href="{{asset('assets/img/logots.png')}}" rel="icon">
     <title>Dashboard</title>
 
     <!-- Custom fonts for this template-->
@@ -25,9 +25,9 @@
 
 <body id="page-top">
 <div id="wrapper">
-    @include('admin/layouts/header')
+    @include('admin/components/header')
     @yield('content')
-    @include('admin/layouts/footer')
+    @include('admin/components/footer')
 </div>
 <!-- End of Page Wrapper -->
 
@@ -50,7 +50,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="{{ route('logout-process') }}">Logout</a>
             </div>
         </div>
     </div>
