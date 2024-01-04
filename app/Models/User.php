@@ -67,4 +67,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(\App\Models\Vehicle::class);
     }
+
+    public function carpoolings()
+    {
+        return $this->hasMany(\App\Models\Carpooling::class, 'driver_id');
+    }
 }

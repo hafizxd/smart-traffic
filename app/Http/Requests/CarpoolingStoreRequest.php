@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 use App\Constants\CarpoolingStatus;
 
 class CarpoolingStoreRequest extends FormRequest
@@ -43,6 +44,13 @@ class CarpoolingStoreRequest extends FormRequest
             'distance' => 'nullable',
             'note' => 'nullable'
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        return composeReply(false, 'Validation fails.', [
+            'errors' => $validator->errors()
+        ], 422);
     }
 
     public function data()

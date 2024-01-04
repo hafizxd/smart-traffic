@@ -15,7 +15,9 @@ class CarpoolingController extends Controller
 {
     public function index(Request $request)
     {
+        $carpoolings = Auth::user()->carpoolings()->with('carpoolingPassangers.passanger')->get();
 
+        return composeReply(true, 'Success', CarpoolingCollection::collection($carpoolings));
     }
 
     public function store(CarpoolingStoreRequest $request)

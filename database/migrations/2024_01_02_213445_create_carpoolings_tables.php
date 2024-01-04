@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('carpoolings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('driver_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('vehicled_id')->constrained('vehicles');
+            $table->foreignId('vehicle_id')->constrained('vehicles');
             $table->tinyInteger('capacity')->unsigned();
             $table->string('phone_number');
             $table->string('departure_info');
