@@ -274,34 +274,6 @@
             </div>
         </section><!-- End Gallery Section -->
 
-        <!-- ======= Testimonials Section ======= -->
-        <section id="testimonials" class="testimonials">
-            <div class="container">
-
-                <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                    <div class="swiper-wrapper">
-
-                      @foreach ($comments as $comment)
-                      <div class="swiper-slide">
-                          <div class="testimonial-item">
-                              <img src="{{ asset('assets/img/user.png') }}" class="testimonial-img" alt="">
-                              <h3>{{ $comment->name }}</h3>
-                              <p>
-                                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                  {{ $comment->message }}
-                                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                              </p>
-                          </div>
-                      </div>
-                      @endforeach
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
-            </div>
-        </section><!-- End Testimonials Section -->
-
         <!-- ======= Team Section ======= -->
         <section id="team" class="team">
             <div class="container">
