@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SensorController extends Controller
 {
@@ -19,7 +19,7 @@ class SensorController extends Controller
 
         $point = \InfluxDB2\Point::measurement('air_qualities')
             ->addTag('code', $request->code)
-            ->addField('carbon_monoxide', $request->carbon_monoxide)
+            ->addField('carbon_monoxide', floatval($request->carbon_monoxide))
             ->time(time());
 
         try {
