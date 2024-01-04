@@ -46,13 +46,6 @@ class CarpoolingStoreRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(Validator $validator)
-    {
-        return composeReply(false, 'Validation fails.', [
-            'errors' => $validator->errors()
-        ], 422);
-    }
-
     public function data()
     {
         return [

@@ -35,7 +35,7 @@ class Handler extends ExceptionHandler
             $response = [
                 'success' => false,
                 'message' => "validation error",
-                'payload' => $e
+                'payload' => $e->getMessage()
             ];
 
             return response()->json($response, 422);
