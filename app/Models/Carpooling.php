@@ -15,7 +15,7 @@ class Carpooling extends Model
 
     public function vehicle()
     {
-        return $this->hasOne(\App\Models\Vehicle::class);
+        return $this->belongsTo(\App\Models\Vehicle::class);
     }
 
     public function carpoolingPassangers()

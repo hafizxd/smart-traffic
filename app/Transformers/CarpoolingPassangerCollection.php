@@ -18,9 +18,8 @@ class CarpoolingPassangerCollection extends JsonResource
     public function toArray($request)
     {
         $resData = $this->resource->toArray();
-        $resData['passanger_data'] = new UserCollection($this->passanger);
+        $resData['status_label'] = CarpoolingPassangerStatus::label($this->status);
         $resData['pick_type'] = ucwords(strtolower($this->pick_type));
-        $resData['status'] = CarpoolingPassangerStatus::NEGOTIATE;
         $resData['passanger_data'] = new UserCollection($this->passanger);
 
         return $resData;

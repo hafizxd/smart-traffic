@@ -42,6 +42,19 @@ Route::middleware('auth:api')->group(function () {
     Route::group(['prefix' => 'carpoolings', 'controller' => CarpoolingController::class], function () {
         Route::get('/', 'index');
         Route::post('/', 'store');
+        Route::get('/mine', 'indexMine');
+
+        Route::group(['prefix' => '{id}'], function () {
+            Route::get('/', 'show');
+            Route::put('/', 'update');
+            Route::delete('/', 'delete');
+
+            Route::get('/passangers', 'indexPassanger');
+            Route::get('/passangers/mine', 'showMinePassanger');
+            Route::post('/passangers', 'storePassanger');
+            Route::put('/passangers/{passangerId}/price', 'updatePricePassanger');
+            Route::put('/passangers/{passangerId}/status', 'updateStatusPassanger');
+        });
     });
 
     // Route::group(['prefix' ])
