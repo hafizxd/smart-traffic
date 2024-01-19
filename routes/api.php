@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\TripController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\SensorController;
 use App\Http\Controllers\Api\ProfileController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Api\DocumentController;
 use App\Http\Controllers\Api\CarpoolingController;
 
 Route::post('/sensor', [SensorController::class, 'store']);
+Route::get('/sensor', [SensorController::class, 'index']);
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
@@ -57,5 +59,7 @@ Route::middleware('auth:api')->group(function () {
         });
     });
 
-    // Route::group(['prefix' ])
+    Route::group(['prefix' => 'trips', 'controller' => TripController::class], function () {
+        Route::post('/navigate', 'indexNavigation');
+    });
 });
