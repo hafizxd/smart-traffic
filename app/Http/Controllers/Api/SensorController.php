@@ -19,19 +19,17 @@ class SensorController extends Controller
             $bucket = "smart_traffic";
             $query = "from(bucket: \"$bucket\")
                 |> range(start: -1h)
-                |> filter(fn: (r) => r._measurement == \"air_qualities\")";
+                |> filter(fn: (r) => r._measurement == \"air_qualities\")
+                |> last()";
 
             // ugly ahh
             // get newest/latest record 
             $sensor->carbon_monoxide = 0;
             $results = $queryApi->query($query);
             if (count($results) > 0) {
-                $result = $results[array_key_last($results)];
-                $records = $result->records;
+                $records = $results[0]->records;
                 if (count($records) > 0) {
-                    $record = $records[array_key_last($records)];
-
-                    $sensor->carbon_monoxide = $record->values["_value"];
+                    $sensor->carbon_monoxide = $records[0]->values["_value"];
                 }
             }
         }

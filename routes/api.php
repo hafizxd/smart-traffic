@@ -60,6 +60,10 @@ Route::middleware('auth:api')->group(function () {
     });
 
     Route::group(['prefix' => 'trips', 'controller' => TripController::class], function () {
+        Route::get('/', 'indexTrip');
         Route::post('/navigate', 'indexNavigation');
+        Route::post('/start', 'start');
+        Route::post('/{id}/end', 'end');
+        Route::get('/{id}', 'show');
     });
 });
