@@ -34,8 +34,7 @@ class TripController extends Controller
         $validator = Validator::make($request->all(), [
             'bbox' => 'required|array',
             'points.coordinates' => 'required|array',
-            'carbon_monoxide' => 'required',
-            'sensors' => 'required|array',
+            'carbon_monoxide' => 'required'
         ]);
 
         if ($validator->fails()) {
