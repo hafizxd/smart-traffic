@@ -24,7 +24,15 @@ class LoginController extends Controller
         ];
 
         if (Auth::guard('web')->attempt($data)) {
-            return redirect('/admin');
+            $user = Auth::guard('web')->user();
+
+            if ($user && $user->role == 1) {
+                return redirect('/admin');
+            } else {
+                Auth::guard('web')->logout();
+                session()->flash('error', 'Anda tidak memiliki izin untuk mengakses.');
+                return redirect('login');
+            }
         } else {
             session()->flash('error', 'Email atau Password Salah');
             return redirect('login');
