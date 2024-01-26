@@ -26,9 +26,9 @@ Route::get('/logout-process', [LoginController::class, 'logoutAction'])->name('l
 
 Route::middleware(['auth:web'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/admin/user', function () {
-        return view('admin/pages/user');
-    });
+    Route::get('/admin/user', [AdminController::class, 'verifView'])->name('admin.pages.user');
+    Route::post('/admin/verify-document/{documentId}', [AdminController::class, 'verifyDocument'])->name('verify.document');
+
     Route::get('/admin/iot', function () {
         return view('admin/pages/iot');
     });
@@ -36,4 +36,5 @@ Route::middleware(['auth:web'])->group(function () {
         return view('admin/pages/carpool');
     });
     Route::get('/admin/comment', [AdminController::class, 'comments'])->name('comment');
+
 });

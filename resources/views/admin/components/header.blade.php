@@ -16,8 +16,8 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
         <a class="nav-link" href="/admin/user">
-            <i class="fas fa-fw fa-users"></i>
-            <span>User</span></a>
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Documents</span></a>
         <a class="nav-link" href="/admin/iot">
             <i class="fas fa-fw fa-tools"></i>
             <span>Iot</span></a>

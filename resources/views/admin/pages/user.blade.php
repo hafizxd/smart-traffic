@@ -18,96 +18,56 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Nama</th>
+                            <th>KTP</th>
+                            <th>STNK</th>
+                            <th>SIM</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @for($i = 0; $i < 10; $i++)
+                        @foreach ($documents->groupBy('user_id') as $groupedDocuments)
                             <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
+                                <td>{{ $groupedDocuments->first()->user->name }}</td>
+                                @foreach(['KTP', 'STNK', 'SIM'] as $type)
+                                    @php
+                                        $document = $groupedDocuments->firstWhere('document_type', $type);
+                                    @endphp
+                                    <td>
+                                        @if ($document)
+                                            <img style="width: 150px" src="{{ asset('storage/documents/' . $document->image) }}">
+                                        @else
+                                            <p>Tidak ada data {{ $type }}</p>
+                                        @endif
+                                    </td>
+                                @endforeach
                                 <td>
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$i}}"><i class="fas fa-fw fa-edit"></i>Edit</button>
-                                    <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$i}}"><i class="fas fa-fw fa-trash"></i>Hapus</button>
-                                    
+                                    @php
+                                        $verifiedAll = $groupedDocuments->every(function ($doc) {
+                                            return $doc->is_verified;
+                                        });
+                                    @endphp
+
+                                    @if ($verifiedAll)
+                                        <p>Dokumen sudah terverifikasi semua</p>
+                                    @else
+                                        @foreach(['KTP', 'STNK', 'SIM'] as $type)
+                                            @php
+                                                $document = $groupedDocuments->firstWhere('document_type', $type);
+                                            @endphp
+                                            @if ($document && !$document->is_verified)
+                                                <form method="POST" action="{{ route('verify.document', ['documentId' => $document->id]) }}">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-success">
+                                                        <i class="fas fa-fw fa-check"></i> Verifikasi {{ $type }}
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 </td>
                             </tr>
-                            <!-- Modal for Edit -->
-                            <div class="modal fade" id="editModal{{$i}}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{$i}}" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <!-- Your modal content for edit goes here -->
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="editModalLabel">Edit User</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <label for="name{{$i}}">Name</label>
-                                                    <input type="text" class="form-control" id="name{{$i}}" placeholder="Enter name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="email{{$i}}">Email</label>
-                                                    <input type="email" class="form-control" id="email{{$i}}" placeholder="Enter email">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="password{{$i}}">Password</label>
-                                                    <input type="password" class="form-control" id="password{{$i}}" placeholder="Enter password">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="age{{$i}}">Age</label>
-                                                    <input type="number" class="form-control" id="age{{$i}}" placeholder="Enter age">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="address{{$i}}">Address</label>
-                                                    <textarea class="form-control" id="address{{$i}}" placeholder="Enter address" rows="3"></textarea>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Modal for Delete -->
-                            <div class="modal fade" id="deleteModal{{$i}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{$i}}" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <!-- Your modal content for delete goes here -->
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteModalLabel">Delete User</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!-- Delete confirmation message or content goes here -->
-                                            Are you sure you want to delete this user?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endfor
+                        @endforeach
                     </tbody>
                 </table>
             </div>
