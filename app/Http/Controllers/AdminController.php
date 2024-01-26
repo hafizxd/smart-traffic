@@ -23,13 +23,13 @@ class AdminController extends Controller
     }
     public function verifyDocument($documentId)
     {
-        $document = Document::findOrFail($documentId);
+        $documents = Document::findOrFail($documentId);
 
-        switch ($document->document_type) {
+        switch ($documents->document_type) {
             case 'KTP':
             case 'STNK':
             case 'SIM':
-                $document->update(['is_verified' => true]);
+                $documents->update(['is_verified' => true]);
                 break;
             default:
                 break;

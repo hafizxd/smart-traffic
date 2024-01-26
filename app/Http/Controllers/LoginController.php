@@ -17,26 +17,19 @@ class LoginController extends Controller
     }
 
     public function loginAction(Request $request)
-{
-    $data = [
-        'email' => $request->input('email'),
-        'password' => $request->input('password'),
-    ];
+    {
+        $data = [
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+        ];
 
-    if (Auth::guard('web')->attempt($data)) {
-        if (Auth::user()->role == 1) {
+        if (Auth::guard('web')->attempt($data)) {
             return redirect('/admin');
         } else {
-            Auth::guard('web')->logout();
-            session()->flash('error', 'Anda tidak memiliki izin untuk mengakses.');
+            session()->flash('error', 'Email atau Password Salah');
             return redirect('login');
         }
-    } else {
-        session()->flash('error', 'Email atau Password Salah');
-        return redirect('login');
     }
-}
-
 
     public function logoutAction()
     {
