@@ -24,7 +24,6 @@ class LoginController extends Controller
     ];
 
     if (Auth::guard('web')->attempt($data)) {
-        // Cek jika peran (role) pengguna adalah 1
         if (Auth::user()->role == 1) {
             return redirect('/admin');
         } else {
