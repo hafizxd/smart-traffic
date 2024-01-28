@@ -179,7 +179,7 @@ class TripController extends Controller
                     FROM sensors 
                     HAVING distance<=100 
                     ORDER BY distance ASC
-                ', ["lat1" => $coordinate[0], "lat2" => $coordinate[0], "lon" => $coordinate[1]]);
+                ', ["lat1" => $coordinate[1], "lat2" => $coordinate[1], "lon" => $coordinate[0]]);
 
                 if (!empty($sensors)) {
                     foreach ($sensors as $sensor) {
