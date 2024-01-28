@@ -205,7 +205,7 @@ class TripController extends Controller
                         }
 
                         $carbonMonoxide += $latestCarbonMonoxide;
-                        $sensors[$keySensor]->carbon_monoxide = $latestCarbonMonoxide;
+                        $sensor->carbon_monoxide = $latestCarbonMonoxide;
                         $sensorsData[$sensor->id] = $sensor;
                     }
                 }
