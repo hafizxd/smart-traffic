@@ -53,7 +53,9 @@ class TripController extends Controller
                 'departure_longitude' => $request->bbox[1],
                 'arrive_latitude' => $request->bbox[2],
                 'arrive_longitude' => $request->bbox[3],
-                'co_total' => $request->carbon_monoxide
+                'co_total' => $request->carbon_monoxide,
+                'departure_info' => $request->departure_info,
+                'arrive_info' => $request->arrive_info
             ]);
 
             $trip->tripDetail()->create([
