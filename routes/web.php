@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SensorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,11 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/admin/user', [AdminController::class, 'verifView'])->name('admin.pages.user');
     Route::post('/admin/verify-document/{documentId}', [AdminController::class, 'verifyDocument'])->name('verify.document');
 
-    Route::get('/admin/iot', function () {
-        return view('admin/pages/iot');
-    });
+    Route::get('/admin/iot', [SensorController::class, 'sensorView'])->name('sensor.index');
+    Route::post('/admin/iot', [SensorController::class, 'store'])->name('sensor.store');
+    Route::put('/admin/iot/{id}', [SensorController::class, 'update'])->name('sensor.update');
+    Route::delete('/admin/iot/{id}', [SensorController::class, 'destroy'])->name('sensor.destroy');
+
     Route::get('/admin/carpool', function () {
         return view('admin/pages/carpool');
     });
