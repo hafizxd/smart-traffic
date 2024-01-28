@@ -119,12 +119,12 @@ class TripController extends Controller
         $payload = array(
             "points" => array(
                 array(
-                    $request->departure_latitude,
-                    $request->departure_longitude
+                    $request->departure_longitude,
+                    $request->departure_latitude
                 ),
                 array(
-                    $request->destination_latitude,
-                    $request->destination_longitude
+                    $request->destination_longitude,
+                    $request->destination_latitude
                 )
             ),
             "algorithm" => "alternative_route",
