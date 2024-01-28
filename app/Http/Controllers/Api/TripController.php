@@ -182,7 +182,7 @@ class TripController extends Controller
                 ', ["lat1" => $coordinate[1], "lat2" => $coordinate[1], "lon" => $coordinate[0]]);
 
                 if (!empty($sensors)) {
-                    foreach ($sensors as $sensor) {
+                    foreach ($sensors as $keySensor => $sensor) {
                         if (isset($sensorsData[$sensor->id]))
                             continue;
 
@@ -205,6 +205,7 @@ class TripController extends Controller
                         }
 
                         $carbonMonoxide += $latestCarbonMonoxide;
+                        $sensors[$keySensor]->carbon_monoxide = $latestCarbonMonoxide;
                         $sensorsData[$sensor->id] = $sensor;
                     }
                 }
