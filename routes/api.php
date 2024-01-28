@@ -51,6 +51,7 @@ Route::middleware('auth:api')->group(function () {
         Route::group(['prefix' => '{id}'], function () {
             Route::get('/', 'show');
             Route::put('/', 'update');
+            Route::put('/status', 'updateStatus');
             Route::delete('/', 'delete');
 
             Route::get('/passangers', 'indexPassanger');

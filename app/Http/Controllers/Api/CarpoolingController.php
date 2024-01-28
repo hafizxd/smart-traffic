@@ -110,6 +110,24 @@ class CarpoolingController extends Controller
         return composeReply(true, 'Success', new CarpoolingCollection($carpooling));
     }
 
+    public function updateStatus(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'status' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return composeReply(false, 'Validation fails.', [
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        $carpooling = Auth::user()->carpoolings()->findOrFail($id);
+        $carpooling->update(['status' => $request->status]);
+
+        return composeReply(true, 'Success', new CarpoolingCollection($carpooling));
+    }
+
     public function delete($id)
     {
         $carpooling = Auth::user()->carpoolings()->findOrFail($id);
