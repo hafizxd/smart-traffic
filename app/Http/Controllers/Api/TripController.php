@@ -177,7 +177,7 @@ class TripController extends Controller
                             PI() / 180)) * 180 / PI()) * 60 * 1609.34) AS distance,
                             sensors.id 
                     FROM sensors 
-                    HAVING distance<=50 
+                    HAVING distance<=100 
                     ORDER BY distance ASC
                 ', ["lat1" => $coordinate[0], "lat2" => $coordinate[0], "lon" => $coordinate[1]]);
 
