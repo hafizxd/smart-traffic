@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -67,7 +68,7 @@ class CarpoolingController extends Controller
     public function store(CarpoolingStoreRequest $request)
     {
         // Validate all user documents is verified
-        $user = Auth::user()->whereHas('documents', function ($query) {
+        $user = User::whereHas('documents', function ($query) {
             $query->where('document_type', 'KTP')
                 ->where('is_verified', true);
         })->whereHas('documents', function ($query) {
@@ -76,7 +77,9 @@ class CarpoolingController extends Controller
         })->whereHas('documents', function ($query) {
             $query->where('document_type', 'SIM')
                 ->where('is_verified', true);
-        })->first();
+        })
+            ->where('id', Auth::user()->id)
+            ->first();
 
         if (!isset($user)) {
             return composeReply(false, 'Please complete all the required documents / wait for document verification by admin', [], 400);
