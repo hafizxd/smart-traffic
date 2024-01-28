@@ -15,6 +15,7 @@ class CarpoolingCollection extends JsonResource
      * @param  \Illuminate\Http\Request
      * @return array
      */
+
     public function toArray($request)
     {
         $resData = $this->resource->toArray();

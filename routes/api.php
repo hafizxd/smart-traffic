@@ -46,6 +46,8 @@ Route::middleware('auth:api')->group(function () {
         Route::post('/', 'store');
         Route::get('/mine', 'indexMine');
 
+        Route::get('/passangers/history', 'historyPassanger');
+
         Route::group(['prefix' => '{id}'], function () {
             Route::get('/', 'show');
             Route::put('/', 'update');

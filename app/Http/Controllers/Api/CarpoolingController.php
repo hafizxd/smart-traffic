@@ -130,6 +130,23 @@ class CarpoolingController extends Controller
     // -
     // -
 
+    public function historyPassanger()
+    {
+        $passangers = Auth::user()->carpoolingPassangers()
+            ->with(['carpooling'])
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        foreach ($passangers as $key => $value) {
+            $carpooling = new CarpoolingCollection($value->carpooling);
+            unset($passangers[$key]->carpooling);
+
+            $passangers[$key]->carpooling_data = $carpooling;
+        }
+
+        return composeReply(true, 'Success', CarpoolingPassangerCollection::collection($passangers));
+    }
+
     public function indexPassanger($id)
     {
         $passangers = Auth::user()->carpoolings()->findOrFail($id)
