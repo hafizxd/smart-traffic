@@ -21,12 +21,6 @@
         <a class="nav-link" href="/admin/iot">
             <i class="fas fa-fw fa-tools"></i>
             <span>Iot</span></a>
-        <a class="nav-link" href="/admin/carpool">
-            <i class="fas fa-fw fa-car"></i>
-            <span>Car Pooling</span></a>
-        <a class="nav-link" href="/admin/comment">
-            <i class="fas fa-fw fa-comments"></i>
-            <span>Komentar</span></a>
     </li>
 
 
