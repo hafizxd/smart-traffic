@@ -193,6 +193,7 @@ class TripController extends Controller
                         $query = "from(bucket: \"$bucket\")
                             |> range(start: -1h)
                             |> filter(fn: (r) => r._measurement == \"air_qualities\")
+                            |> filter(fn: (r) => r.code == \"" . $sensor->code . "\")
                             |> last()";
 
                         // ugly ahh
