@@ -177,7 +177,8 @@ class TripController extends Controller
                     SELECT ((ACOS(SIN(:lat1 * PI() / 180) * SIN(latitude * PI() / 180) + 
                             COS(:lat2 * PI() / 180) * COS(latitude * PI() / 180) * COS((:lon - longitude) * 
                             PI() / 180)) * 180 / PI()) * 60 * 1609.34) AS distance,
-                            sensors.id 
+                            sensors.id,
+                            sensors.code 
                     FROM sensors 
                     HAVING distance<=100 
                     ORDER BY distance ASC
